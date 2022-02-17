@@ -14,13 +14,13 @@ const userSchema = mongoose.Schema(
       required: [true, 'Password is required'],
       type: String,
     },
-    name: {
+    isAdmin: {
       type: Boolean,
       default: false,
     },
   },
   {
-    timestamp: true,
+    timestamps: true,
   }
 );
 
