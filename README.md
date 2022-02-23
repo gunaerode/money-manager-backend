@@ -14,6 +14,8 @@ $ npm run dev -> for development purpose
 
 # [HTTP verbs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
+[`Refer here`](https://www.rfc-editor.org/rfc/rfc2616#section-6.1.1)
+
 ---
 
     - Informational responses (100–199)
@@ -101,3 +103,11 @@ There are two ways to deploy on Heroku
 - `$ git push heroku main`
 
 **Note** Constant key values set on `settings` reveal var there we can set all the `.env` values as it is.
+
+#### Reference
+
+---
+
+- express-async-handler
+  - [express doc for reference](https://expressjs.com/en/guide/error-handling.html) - In `Writing error handlers` section
+  - [ref 1](https://zellwk.com/blog/async-await-express/)

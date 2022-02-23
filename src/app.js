@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const dbconnection = require('../config/dbconnection');
 const userRouter = require('./routes/user.router');
+const { errorHandler, _404 } = require('./middlewares/error.middleware');
 
 const app = express();
 dbconnection();
@@ -12,5 +13,10 @@ app.use(express.json());
 
 // user router
 app.use('/', userRouter);
+
+// Error middlewares
+// errorHandler middleware should be last route as mentioned in the express check read me reference section
+app.use(_404);
+app.use(errorHandler);
 
 module.exports = app;
