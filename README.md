@@ -111,3 +111,10 @@ There are two ways to deploy on Heroku
 - express-async-handler
   - [express doc for reference](https://expressjs.com/en/guide/error-handling.html) - In `Writing error handlers` section
   - [ref 1](https://zellwk.com/blog/async-await-express/)
+- bcrypt
+  - [bcrypt vs bcryptjs](https://javascript.plainenglish.io/node-js-bcrypt-vs-bcryptjs-benchmark-69a9e8254cc2#:~:text=Bcrypt%20is%201.8%20times%20faster,times%20faster%20in%20comparing%20function.)
+  - [bcryptjs for browser use](https://stackoverflow.com/questions/54674387/how-do-nodes-bcrypt-and-bcryptjs-libraries-differ)
+
+#### Notes
+
+- `Bcrypt` is 1.8 times faster than `bcryptjs` in generating hash passwords and 1.8 times faster in comparing function.

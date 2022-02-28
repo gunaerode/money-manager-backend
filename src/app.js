@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // user router
-app.use('/', userRouter);
+app.use('/api/users', userRouter);
 
 // Error middlewares
 // errorHandler middleware should be last route as mentioned in the express check read me reference section

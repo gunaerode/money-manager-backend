@@ -17,4 +17,21 @@ const userSignup = expressAsyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { userSignup };
+// fetch all the users
+
+const fetchUsers = expressAsyncHandler(async (req, res, next) => {
+  try {
+    const allUsers = await User.find({});
+    if (allUsers.length > 0) {
+      res.json(allUsers);
+    } else {
+      res.status(204).json({
+        msg: 'users not found',
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+module.exports = { userSignup, fetchUsers };
