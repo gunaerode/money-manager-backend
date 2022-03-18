@@ -1,5 +1,5 @@
 const expressAsyncHandler = require('express-async-handler');
-const User = require('../models/User');
+const User = require('../models/Users');
 
 const userSignup = expressAsyncHandler(async (req, res) => {
   const { name, email, password, isAdmin } = req?.body;
@@ -34,4 +34,10 @@ const fetchUsers = expressAsyncHandler(async (req, res, next) => {
   }
 });
 
-module.exports = { userSignup, fetchUsers };
+// login user
+const loginUser = expressAsyncHandler((req, res, next) => {
+  const { email, password } = req?.body;
+  res.json(req?.body);
+});
+
+module.exports = { userSignup, fetchUsers, loginUser };

@@ -34,5 +34,10 @@ userSchema.pre('save', async function (next) {
   next(); // need to pass to next route
 });
 
+// Verify password
+userSchema.methods.isPasswordMatch = async function (loginPassword) {
+  return await bcrypt.compare(loginPassword, this.password);
+};
+
 const User = mongoose.model('User', userSchema);
 module.exports = User;
