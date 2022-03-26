@@ -35,9 +35,9 @@ const fetchUsers = expressAsyncHandler(async (req, res, next) => {
 });
 
 // login user
-const loginUser = expressAsyncHandler((req, res, next) => {
+const userLogin = expressAsyncHandler((req, res, next) => {
   const { email, password } = req?.body;
   res.json(req?.body);
 });
 
-module.exports = { userSignup, fetchUsers, loginUser };
+module.exports = { userSignup, fetchUsers, userLogin };
