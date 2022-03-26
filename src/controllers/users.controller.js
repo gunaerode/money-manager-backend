@@ -1,4 +1,5 @@
 const expressAsyncHandler = require('express-async-handler');
+const generateToken = require('../middlewares/generateTokens');
 const User = require('../models/Users');
 
 const userSignup = expressAsyncHandler(async (req, res) => {
@@ -35,9 +36,29 @@ const fetchUsers = expressAsyncHandler(async (req, res, next) => {
 });
 
 // login user
-const userLogin = expressAsyncHandler((req, res, next) => {
+const userLogin = expressAsyncHandler(async (req, res, next) => {
+  /**
+   * NOTE: data hash must be a string if it's not provided as string bcrypt will throw error
+   */
   const { email, password } = req?.body;
-  res.json(req?.body);
+  try {
+    const userDetails = await User.findOne({ email });
+
+    if (userDetails && (await userDetails.isPasswordMatch(password))) {
+      res.json({
+        _id: userDetails?._id,
+        email: userDetails?.email,
+        isAdmin: userDetails?.isAdmin,
+        token: generateToken(userDetails?._id),
+      });
+    } else {
+      res.status(401).json({
+        msg: 'Invalid Credentials',
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = { userSignup, fetchUsers, userLogin };
